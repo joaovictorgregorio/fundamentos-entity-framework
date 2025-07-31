@@ -7,7 +7,7 @@ using (var context = new BlogDataContext())
     /*
     var tag = new Tag { Name = "Git", Slug = "git" };
     context.Tags.Add(tag);
-    context.SaveChanges(); */
+    context.SaveChanges(); 
 
     var tag = context.Tags.FirstOrDefault(x => x.Id == 4);
     tag.Name = ".NET";
@@ -15,5 +15,20 @@ using (var context = new BlogDataContext())
 
     context.Update(tag);
     context.SaveChanges();
-    Console.WriteLine("Atualização da TAG feita com sucesso!!!");
+    Console.WriteLine("Atualização da TAG feita com sucesso!!!"); 
+
+    var tag = context.Tags.FirstOrDefault(x => x.Id == 3);
+
+    context.Remove(tag);
+    context.SaveChanges(); */
+
+    var tags = context
+        .Tags
+        .Where(x => x.Name.Contains("ASP.NET"))
+        .ToList();
+
+    foreach (var tag in tags)
+    {
+        Console.WriteLine(tag.Name);
+    }
 }
