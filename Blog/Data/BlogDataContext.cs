@@ -9,19 +9,7 @@ namespace Blog.Data
 {
     public class BlogDataContext : DbContext
     {
-        public DbSet<Category> Categories { get; set; }
-        public DbSet<Post> Posts { get; set; }
-        public DbSet<User> Users { get; set; }
-        /* Não é possível utilizar, pois essas tabelas não tem chave primária e EF não entende. Será configurado posteriormente.
-        public DbSet<UserRole> UserRoles { get; set; }
-        public DbSet<PostTag> PostTags { get; set; }
-        public DbSet<Role> Roles { get; set; }
-        public DbSet<Tag> Tags { get; set; } 
-        ConnectionString docker note pessoal password=jmS052703@@ note company password=j05m27S03@@@*/
         protected override void OnConfiguring(DbContextOptionsBuilder options)
-        {
-            options.UseSqlServer("Server=localhost,1433;Database=Blog;User Id=sa;Password=j05m27S03@@@;TrustServerCertificate=True;");
-            // options.LogTo(Console.WriteLine);
-        }
+            => options.UseSqlServer("Server=localhost,1433;Database=FluentBlog;User Id=sa;Password=j05m27S03@@@;TrustServerCertificate=True;");
     }
 }
