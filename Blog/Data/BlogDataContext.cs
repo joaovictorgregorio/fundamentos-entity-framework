@@ -19,6 +19,9 @@ namespace Blog.Data
         public DbSet<Tag> Tags { get; set; } 
         ConnectionString note pessoal password=jmS052703@@ */
         protected override void OnConfiguring(DbContextOptionsBuilder options)
-            => options.UseSqlServer("Server=localhost,1433;Database=Blog;User Id=sa;Password=j05m27S03@@@;TrustServerCertificate=True;");
+        {
+            options.UseSqlServer("Server=localhost,1433;Database=Blog;User Id=sa;Password=jmS052703@@;TrustServerCertificate=True;");
+            // options.LogTo(Console.WriteLine);
+        }
     }
 }
