@@ -3,20 +3,20 @@ using Blog.Models;
 using Microsoft.EntityFrameworkCore;
 using System;
 
-using var context = new BlogDataContext();
+Console.Clear();
 
-var posts = context
+using var context = new BlogDataContext();
+var post = context
     .Posts
-    .AsNoTracking()
+    // .AsNoTracking()
     .Include(x => x.Author)
     .Include(x => x.Category)
     .OrderByDescending(x => x.LastUpdateDate)
-    .ToList();
+    .FirstOrDefault();
 
-foreach (var post in posts)
-{
-    Console.WriteLine($"{post.Title} escrito por {post.Author?.Name} em {post.Category?.Name}");
-}
+post.Author.Name = "João G.";
+context.Posts.Update(post);
+context.SaveChanges();
 
 
 
