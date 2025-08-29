@@ -16,7 +16,7 @@ namespace Blog.Data
 
         /* Connection String */
         protected override void OnConfiguring(DbContextOptionsBuilder options)
-            => options.UseSqlServer("Server=localhost,1433;Database=FluentBlog;User Id=sa;Password=j05m27S03@@@;TrustServerCertificate=True;");
+            => options.UseSqlServer("Server=localhost,1433;Database=Blog;User Id=sa;Password=j05m27S03@@@;TrustServerCertificate=True;");
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
