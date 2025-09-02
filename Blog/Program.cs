@@ -3,17 +3,25 @@ using Blog.Models;
 using Microsoft.EntityFrameworkCore;
 using System;
 
-Console.Clear();
-
-var user = new User
+class Program
 {
-    Name = "Josenildo",
-    Slug = "josenildo",
-    Email = "josenildo@gmail.com",
-    Bio = "Programador .NET",
-    GitHub = "josenildo.github.io"
-};
+    static async Task Main(string[] args)
+    {
+        Console.Clear();
 
-using var context = new BlogDataContext();
-context.Users.Add(user);
-context.SaveChanges();
+        using var context = new BlogDataContext(); // Conexão com o banco de dados
+
+        var post = await context.Posts.ToListAsync();
+        var user = await context.Users.ToListAsync();
+
+        var posts = await GetPosts(context);
+
+        Console.WriteLine("Hello, World!");
+    }
+
+    // Exemplo de método para buscar posts
+    public static async Task<IEnumerable<Post>> GetPosts(BlogDataContext context)
+    {
+        return await context.Posts.ToListAsync();
+    }
+}
